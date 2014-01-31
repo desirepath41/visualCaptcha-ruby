@@ -1,10 +1,11 @@
-( function( angular ) {
+( function( window, angular ) {
     angular
         .module( 'app', [ 'visualCaptcha' ] )
         .controller( 'captchaController', function( $scope ) {
             $scope.captchaOptions = {
                 imgPath: '/img/',
                 captcha: {
+                    url: window.location.protocol.origin,
                     numberOfImages: 5
                 },
                 init: function ( captcha ) {
@@ -20,4 +21,4 @@
                 }
             }
         } );
-}( angular ) );
+}( window, angular ) );

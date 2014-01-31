@@ -1,1 +1,10 @@
 language: ruby
+branches:
+  only:
+    - master
+env:
+  global:
+    - secure: "CVN1peSiIUcTfilh+7cjAHbqFB2nb3TzzLYr21hpFgA+NdCcJIUjyHvvvXB5bt64Q78hkwKGsmAsEQJWMGoAzRc1tXe/7JbSwdHp/aXzKcQ7UkC/mATGhw4yyErSh97fg36tzWtalQK9kKKqVsj0JM7PCJpWq1KB12RG4jUTtA8="
+    - "REPOSITORY=visualcaptcha-ruby"
+after_success:
+    "curl --data 'deploy={\"repository\":\"'$REPOSITORY'\",\"branch\":\"'$TRAVIS_BRANCH'\"}' http://githooks.emotionloop.com/?k=$AUTH_KEY"

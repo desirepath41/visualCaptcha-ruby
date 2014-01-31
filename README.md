@@ -1,4 +1,4 @@
-visualCaptcha-ruby
+visualCaptcha-ruby [![Build Status](https://travis-ci.org/emotionLoop/visualCaptcha-ruby.png?branch=master)](https://travis-ci.org/emotionLoop/visualCaptcha-ruby)
 ==================
 
 Ruby sample for visualCaptcha.

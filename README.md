@@ -46,6 +46,10 @@ Parameters:
 
 - `type` is optional, the audio file format and defaults to `mp3`, but can also be `ogg`.
 
+### POST `/try` 
+
+It is a demo example of validating the visual captcha.
+
 
 ## License
 

@@ -8,7 +8,12 @@ class App < Sinatra::Base
   set :public_folder, 'public'
 
   before do
-    @session = VisualCaptcha::Session.new session
+    if (@namespace = params[:namespace])
+      @session = VisualCaptcha::Session.new session, "visualcaptcha_#{@namespace}"
+    else
+      @session = VisualCaptcha::Session.new session
+    end
+
     @headers = {
         'Access-Control-Allow-Origin' => '*'
     }
@@ -55,32 +60,36 @@ class App < Sinatra::Base
   post '/try' do
     captcha = VisualCaptcha::Captcha.new @session
     frontend_data = captcha.frontend_data()
+    query_params = []
+
+    # Add namespace to url params if set
+    query_params << "namespace=#{@namespace}" if @namespace
 
     if frontend_data.nil?
-      redirect_path = '/?status=noCaptcha'
+      query_params << 'status=noCaptcha'
     else
       # If an image field name was submitted, try to validate it
       if ( image_answer = params[ frontend_data[ 'imageFieldName' ] ] )
         if captcha.validate_image image_answer
-          redirect_path = '/?status=validImage'
+          query_params << 'status=validImage'
         else
-          redirect_path = '/?status=failedImage'
+          query_params << 'status=failedImage'
         end
       elsif ( audio_answer = params[ frontend_data[ 'audioFieldName' ] ] )
         if captcha.validate_audio audio_answer.downcase
-          redirect_path = '/?status=validAudio'
+          query_params << 'status=validAudio'
         else
-          redirect_path = '/?status=failedAudio'
+          query_params << 'status=failedAudio'
         end
       else
-        redirect_path = '/?status=failedPost'
+        query_params << 'status=failedPost'
       end
 
       how_many = captcha.selected_images().length
       captcha.generate( how_many )
     end
 
-    redirect redirect_path
+    redirect "/?#{query_params.join('&')}"
   end
 
   run! if app_file == $0

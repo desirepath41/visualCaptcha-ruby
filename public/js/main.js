@@ -3,9 +3,8 @@
         .module( 'app', [ 'visualCaptcha' ] )
         .controller( 'captchaController', function( $scope ) {
             $scope.captchaOptions = {
-                imgPath: '/img/',
+                imgPath: 'img/',
                 captcha: {
-                    url: window.location.origin,
                     numberOfImages: 5
                 },
                 init: function ( captcha ) {

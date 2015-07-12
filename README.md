@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/emotionLoop/visualCaptcha-ruby.svg?flat=true&branch=master)](https://travis-ci.org/emotionLoop/visualCaptcha-ruby)
-[![Codacy Badge](https://www.codacy.com/project/badge/39fe3aef8f15484aba2f9acb88a2f1fb)](https://www.codacy.com/app/bruno-bernardino/visualCaptcha-ruby)
+[![Codacy](https://www.codacy.com/project/badge/39fe3aef8f15484aba2f9acb88a2f1fb)](https://www.codacy.com/app/bruno-bernardino/visualCaptcha-ruby)
 [![Code Climate](https://codeclimate.com/github/emotionLoop/visualCaptcha-ruby/badges/gpa.svg)](https://codeclimate.com/github/emotionLoop/visualCaptcha-ruby)
 
 # visualCaptcha-ruby
@@ -64,4 +64,4 @@ This is just a sample route, where we post the form to, and where the visualCapt
 
 ## License
 
-MIT. Check the LICENSE file.
+MIT. Check the [LICENSE](LICENSE) file.

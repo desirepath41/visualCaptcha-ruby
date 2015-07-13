@@ -5,7 +5,31 @@
             $scope.captchaOptions = {
                 imgPath: 'img/',
                 captcha: {
-                    numberOfImages: 5
+                    numberOfImages: 5,
+                    callbacks: {
+                        loaded: function( captcha ) {
+                            // Binds an element to callback on click
+                            // @param element object like document.getElementById() (has to be a single element)
+                            // @param callback function to run when the element is clicked
+                            var _bindClick = function( element, callback ) {
+                                if ( element.addEventListener ) {
+                                    element.addEventListener( 'click', callback, false );
+                                } else {
+                                    element.attachEvent( 'onclick', callback );
+                                }
+                            };
+
+                            // Avoid adding the hashtag to the URL when clicking/selecting visualCaptcha options
+                            var anchorOptions = document.getElementById( 'sample-captcha' ).getElementsByTagName( 'a' );
+                            var anchorList = Array.prototype.slice.call( anchorOptions );// .getElementsByTagName does not return an actual array
+                            anchorList.forEach( function( anchorItem ) {
+                                _bindClick( anchorItem, function( event ) {
+                                    event.preventDefault();
+                                });
+                            });
+                        }
+                    }
+
                 },
                 init: function ( captcha ) {
                     $scope.captcha = captcha;

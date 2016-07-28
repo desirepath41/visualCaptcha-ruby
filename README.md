@@ -4,7 +4,7 @@
 
 # visualCaptcha-ruby
 
-Ruby sample for visualCaptcha. [You can also see it live](http://ruby.demo.visualcaptcha.net).
+Ruby sample for visualCaptcha.
 
 This is  demo/sample Ruby app that uses the [visualCaptcha rubygem](https://github.com/emotionLoop/visualCaptcha-rubyGem) and the [visualCaptcha AngularJS bower package](https://github.com/emotionLoop/visualCaptcha-frontend-angular), as a proof-of-concept for how to integrate it with your Ruby project.
 
